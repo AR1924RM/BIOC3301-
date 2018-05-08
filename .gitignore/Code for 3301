@@ -51,32 +51,18 @@ export TMPDIR=~/qiime_tmp
 #multiple_rarefactions.py -i ./otus/otu_table.biom -o ./otus/rarefied_otu_tables -n 10 -m 10 -x 140 -s 10
 
 
-# statistical comparison of alpha diversity between sample vegetation
-#compare_alpha_diversity.py -i ./otus/core_output/arare_max30000/alpha_div_collated/observed_otus.txt -c SampleVegetation -m map.tsv -o ./otus/veg_sig_alpha_div.txt
-
-# statistical comparison of alpha diversity between ph
-#compare_alpha_diversity.py -i ./otus/core_output/arare_max30000/alpha_div_collated/observed_otus.txt -c SamplePh -m map.tsv -o ./otus/ph_sig_alpha_div.txt
-
-# statistical comparison of alpha diversity between sample depth
-#compare_alpha_diversity.py -i ./otus/core_output/arare_max30000/alpha_div_collated/observed_otus.txt -c SampleDepth -m map.tsv -o ./otus/depth_sig_alpha_div.txt
-
-# statistical comparison of alpha diversity between sample vegetation and sample ph
-#compare_alpha_diversity.py -i ./otus/core_output/arare_max30000/alpha_div_collated/observed_otus.txt -c SampleVegetation,SamplePh -m map.tsv -o./otus/vegph_sig_alpha_div.txt
-
-
 # make 2D beta-diversity unifrac plots
 #make_2d_plots.py -i ./otus/core_output/bdiv_even30000/weighted_unifrac_pc.txt -m map.tsv -o 2d_plots
 
-
 # statistical comparison of beta diversity between vegetation
 #compare_categories.py -i ./otus/core_output/bdiv_even30000/unweighted_unifrac_dm.txt -m map.tsv -c SampleVegetation -o ./otus/significance_beta_diversity_anosim --method anosim
-
 
 # statistical comparison of beta diversity between depth
 #compare_categories.py -i ./otus/core_output/bdiv_even30000/unweighted_unifrac_dm.txt -m map.tsv -c SampleDepth -o ./otus/significance_depth_beta_diversity_anosim --method anosim
 
 # statistical comparison of beta diversity between ph
 #compare_categories.py -i ./otus/core_output/bdiv_even30000/unweighted_unifrac_dm.txt -m map.tsv -c SamplePh -o ./otus/significance_ph_beta_diversity_anosim --method anosim
+
 
 
 #summarize taxa level 2 phyla abundance
@@ -99,24 +85,13 @@ export TMPDIR=~/qiime_tmp
 #statistical analysis of order abundance between vegetation - Kruskal-Wallis test
 #group_significance.py -i ./otus/taxa_summaries_3/otu_table_L3.biom -m map.tsv -c SampleVegetation -o ./otus/taxa_summaries_3/taxa_summary_vegetation.txt -s kruskal_wallis
 
-#filter alphaproteobacteria
-#filter_taxa_from_otu_table.py -i ./otus/otu_table.biom -o ./otus/otu_table_alpha_only.biom -p c__Alphaproteobacteria
 
-
-#statistical significance of alphaproteobacteria
-#group_significance.py -i ./otus/otu_table_alpha_only.biom -m map.tsv -c SampleVegetation -o ./otus/alpha_only_veg.txt -s kruskal_wallis
 
 #filter rhizobiales
 #filter_taxa_from_otu_table.py -i ./otus/otu_table.biom -o ./otus/otu_table_rhizobiales_only.biom -p o__Rhizobiales
 
 #statistical signficance of rhizobiales
 #group_significance.py -i ./otus/otu_table_rhizobiales_only.biom -m map.tsv -c SampleVegetation -o ./otus/rhizobiales_only_veg.txt -s kruskal_wallis
-
-#filter rhizobiaceae
-#filter_taxa_from_otu_table.py -i ./otus/otu_table.biom -o ./otus/otu_table_rhizobiaceae_only.biom -p f__Rhizobiaceae
-
-#statistical significance of rhizobiaceae
-#group_significance.py -i ./otus/otu_table_rhizobiaceae_only.biom -m map.tsv -c SampleVegetation -o ./otus/rhizobiaceae_only_veg.txt -s kruskal_wallis
 
 #filter gaiellales
 #filter_taxa_from_otu_table.py -i ./otus/otu_table.biom -o ./otus/otu_table_gaiellales_only.biom -p o__Gaiellales
@@ -134,7 +109,6 @@ group_significance.py  -i ./otus/otu_table_myxococcales_only.biom -m map.tsv -c 
 
 #visually compare phyla abundance between vegetation by bar plots
 #summarize_taxa_through_plots.py -i ./otus/otu_table.biom -o ./otus/taxa_summaries/taxa_summary_vegetation_barplot -m map.tsv -c SampleVegetation
-
 
 #make otu heatmap of phyla
 #make_otu_heatmap.py -i ./otus/taxa_summaries/otu_table_L2.biom -m map.tsv -o heatmap.pdf
